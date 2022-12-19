@@ -27,21 +27,29 @@ void setup(void)
     msg.buf[idx] = 0;
   }
 
-  pid0.init(1.0, 0.0, 0.0); //p,i,dの順に指定できる
+  pid0.init(1.0, 0.0, 0.0);
 
   MsTimer2::set(2, timerInt);
   MsTimer2::start();
 
 }
 
+int cnt=0;
+
 void loop(void)
 {
   int u[4] = {0};
-  u[0] = 500; //ここの数字はrpm指定、-5000~5000くらい
-  
-  Serial.print(u[0]);//目標速度
-  Serial.print(",");
-  
+    if(cnt<200){
+     u[0]=1000;
+     Serial.print("1000");//目標速度
+    }
+    else{
+     u[0]=500;
+     Serial.print("500");//目標速度
+    }
+    cnt++;
+    if(cnt>400)cnt=0;
+    Serial.print(",");
   u[0] = pid0.pid_out(u[0]);
 
   for (int i = 0; i < 4; i++) {
