@@ -30,10 +30,10 @@ void setup(void)
     msg.buf[idx] = 0;
   }
 
-  pid0.init(3.0, 0.001, 0.003); //p,i,dの順に指定できる
-  pid1.init(3.0, 0.001, 0.003);
-  pid2.init(3.0, 0.001, 0.003);
-  pid3.init(3.0, 0.001, 0.003);
+  pid0.init(3.0, 0.001, 0.03); //p,i,dの順に指定できる
+  pid1.init(3.0, 0.001, 0.03);
+  pid2.init(3.0, 0.001, 0.03);
+  pid3.init(3.0, 0.001, 0.03);
 
   MsTimer2::set(2, timerInt);
   MsTimer2::start();
